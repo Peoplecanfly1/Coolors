@@ -1,0 +1,259 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Mulish', sans-serif;
+  color: rbg(51, 51, 51);
+}
+
+button {
+  font-family: 'Mulish', sans-serif;
+  border: none;
+}
+
+path, i, svg {
+  pointer-events: none;
+}
+
+.colors {
+  min-height: 80vh;
+  display: flex;
+  color: #d4d4d4;
+}
+
+.colors .color {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.colors .color h2 {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.colors .color .sliders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0%;
+  background-color: white;
+  padding: 1rem;
+  width: 80%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  transform: translateY(100px);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.colors .color .sliders.active {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: all;
+}
+
+.colors .color .sliders button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  border-top-right-radius: 1rem;
+  border: none;
+  background-color: #494949;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.colors .color .sliders input[type='range'] {
+  appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.colors .color .sliders input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.colors .color .controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.colors .color .controls button {
+  font-size: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 2rem  0rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20vh;
+}
+
+.panel button {
+  font-size: 1.2rem;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background-color: #1f213f;
+  cursor: pointer;
+  border-radius: 1rem;
+  color: white;
+}
+
+.panel p {
+  font-size: 1.2rem;
+}
+
+.panel .library-panel, .panel .generate-panel, .panel .save-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-container, .save-container, .library-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.6s all ease-in-out;
+}
+
+.copy-container.active, .save-container.active, .library-container.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.copy-popup, .save-popup, .library-popup {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 2rem;
+  transition: transform 0.6s ease;
+  transform: translateY(-2rem);
+  min-width: 30%;
+  min-height: 30vh;
+}
+
+.copy-popup.active, .save-popup.active, .library-popup.active {
+  transform: translateY(0rem);
+}
+
+.copy-popup h4, .save-popup h4, .library-popup h4 {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.close-save, .close-library {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  border-top-right-radius: 1rem;
+  border: none;
+  background-color: #494949;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-save {
+  margin: 2rem;
+  padding: 1rem 3rem;
+  background: #1f213f;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.save-name {
+  font-size: 2rem;
+}
+
+.library-popup {
+  min-width: 40%;
+  padding: 1rem;
+  justify-content: flex-start;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.library-popup .custom-palette {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  padding: 2rem;
+  margin: 0.5rem;
+}
+
+.library-popup .custom-palette__name {
+  color: rbg(51, 51, 51);
+  font-size: 1.5rem;
+}
+
+.library-popup .custom-palette__colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 3rem;
+}
+
+.library-popup .custom-palette__select {
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: #1f213f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.library-popup .custom-palette .saved-color {
+  width: 20%;
+  height: 100%;
+  background-color: red;
+  margin-left: 0.1rem;
+}
+/*# sourceMappingURL=style.css.map */

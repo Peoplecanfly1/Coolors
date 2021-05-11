@@ -1,0 +1,252 @@
+@import 'mixin';
+
+$dark-grey: rbg(51,51,51);
+$dark-white: rgb(212,212,212);
+$light-black: rgb(73,73,73);
+$dark-blue: #1f213f;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Mulish', sans-serif;
+    color: $dark-grey
+}
+
+button{
+    font-family: 'Mulish',
+    sans-serif;
+    border: none;
+}
+
+path,i,svg{
+   pointer-events: none; 
+}
+
+.colors{
+    min-height: 80vh;
+    display: flex;
+    color: $dark-white;
+
+
+    .color{
+        @include flex($direction: column, $j-c: space-evenly);
+        flex: 1;
+        height: 80vh;
+        position: relative;
+        overflow: hidden;
+        h2{
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .sliders {
+            @include flex($direction: column);
+            position: absolute;
+            bottom: 0%;
+            background-color: white;
+            padding: 1rem;
+            width: 80%;
+            border-top-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            // adding initial possition to make POPUP
+            transform:  translateY(100px);
+            transition: all 0.5s ease-in-out ;
+            pointer-events: none;
+            opacity: 0;
+
+            &.active{
+                opacity: 1;
+                transform: translateY(0px);
+                pointer-events: all;
+            }
+
+            button{
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 0.5rem ;
+                border-top-right-radius: 1rem;
+                border: none;
+                background-color: $light-black;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+
+            input[type='range']{
+                appearance: none;
+                margin: 1rem 0rem;
+                width: 100%;
+                position: relative;
+                border-radius: 1rem;
+                cursor: pointer;
+                &::-webkit-slider-thumb{
+                    -webkit-appearance: none;
+                    border: none;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 5px;
+                    background-color: white;
+                }
+            }
+
+            
+        }
+
+        .controls {
+            @include flex($direction: column);
+
+            button{
+                font-size: 2rem;
+                border: none;
+                background: none;
+                cursor: pointer;
+                margin: 2rem  0rem;
+            }
+        }
+    }
+
+    
+
+}
+
+.panel {
+    @include flex($j-c: space-evenly);
+    height: 20vh;
+
+
+    button {
+        font-size: 1.2rem;
+        margin:1rem;
+        padding: 1rem 2rem;
+        background-color: rgb(31,33,63);
+        cursor: pointer;
+        border-radius: 1rem;
+        color: white;
+    }
+
+    p{
+        font-size: 1.2rem;
+    }
+
+    .library-panel, .generate-panel, .save-panel{
+        @include flex($direction: column)
+    }
+}
+
+.copy-container,.save-container,.library-container{
+    @include flex();
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.6s all ease-in-out;
+
+    &.active{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.copy-popup, .save-popup, .library-popup{
+    background-color: white;
+    @include flex($direction: column,$j-c: space-evenly );
+    border-radius: 2rem;
+    transition: transform 0.6s ease;
+    transform: translateY(-2rem);
+    min-width: 30%;
+    min-height: 30vh;
+
+    &.active{
+        transform: translateY(0rem);
+    }
+
+
+    h4{
+        font-size: 2rem;
+        padding: 2rem;
+    }
+
+    
+}
+
+.close-save, .close-library {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    border-top-right-radius: 1rem;
+    border: none;
+    background-color: $light-black;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-save{
+    margin: 2rem;
+    padding: 1rem 3rem;
+    background: $dark-blue;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.save-name {
+    font-size: 2rem;
+}
+
+.library-popup{
+    min-width: 40%;
+    padding: 1rem;
+    justify-content: flex-start;
+    max-height: 50vh;
+    overflow-y: scroll;
+
+    .custom-palette {
+        @include flex($j-c: space-evenly);
+        width: 100%;
+        height: 2rem;
+        padding: 2rem ;
+        margin: 0.5rem;
+
+
+        &__name{
+            color: $dark-grey;
+            font-size: 1.5rem;
+            
+        }
+
+        &__colors{
+            @include flex();
+            width: 40%;
+            height: 3rem;
+        }
+
+        &__select{
+            padding: 1rem;
+            font-size: 1.5rem;
+            background-color: $dark-blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .saved-color{
+            width: 20%;
+            height: 100%;
+            background-color: red;
+            margin-left: 0.1rem;
+        }
+    }
+}
+
