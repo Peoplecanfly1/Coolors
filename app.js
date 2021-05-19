@@ -292,7 +292,9 @@ class Color {
     if (existingPallets.length != 0) {
       existingPallets.forEach((item) => item.remove());
     }
-
+    if(!palett){
+      return
+    }
     palett.forEach((item) => {
       const elem = document.createElement("div");
       elem.classList.add("custom-palette");
