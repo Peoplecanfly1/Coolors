@@ -14,11 +14,11 @@ Color palette generator, analogue of [coolors.co](https://coolors.co/)
 - Color code copy on click.
 
 ### Development approaches & features:
-- Live tracking of color parameters on change of any of 3 other changes theyr parameters according HSL + visual background change of input.
-- Live control of contrast betwen text and color. To prevenet unreadability in case luminous text on luminous color. 
+- Live tracking of color parameters on change any of it, the rest parameters modification according HSL + visual background change of input.
+- Live control of contrast between text and color. To prevent unreadability in case luminous text on luminous color. 
 - Working with local storage, set and get palettes. 
 - Class based approach
-- Resuing methods/functions in re-render or render from library. 
+- Reusing methods/functions in re-render or render from library. 
 
 
 ## [DEMONSTRATION](https://peoplecanfly1.github.io/Coolors/)
