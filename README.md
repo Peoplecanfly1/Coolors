@@ -1,3 +1,4 @@
+
 # Coolors
 
 ### Stack:
@@ -22,3 +23,5 @@ Color palette generator, analogue of [coolors.co](https://coolors.co/)
 
 
 ## [DEMONSTRATION](https://peoplecanfly1.github.io/Coolors/)
+
+![coolors](https://user-images.githubusercontent.com/28806178/118779814-17dd9400-b894-11eb-866f-c1fcbff76969.PNG)
